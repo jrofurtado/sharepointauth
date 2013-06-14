@@ -1,7 +1,7 @@
 import 'dart:json' as json;
 import 'dart:html';
 import 'package:web_ui/web_ui.dart';
-import 'authentication.dart';
+import 'package:sharepointauth/authentication.dart';
 
 class Sharepointauth extends WebComponent {
 @observable
