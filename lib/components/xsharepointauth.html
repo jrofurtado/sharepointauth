@@ -2,10 +2,10 @@
 
 <html>
   <body>
-    <element name="xsharepointauth" constructor="Sharepointauth" extends="div">
+    <element name="xsharepointauth" constructor="Sharepointauth">
       <template>
-        <iframe id="sharepointauth_iframe" src="{{endpoint}}" width="180" height="0" style="visibility: hidden"></iframe>    
-        <div class="sharepointauth">
+        <iframe id="sharepointauth_iframe" src="{{endpoint}}" width="0" height="0" style="visibility: hidden"></iframe>    
+        <span class="sharepointauth">
           <template if="authentication==null">
             Autenticando...
           </template>
@@ -17,7 +17,7 @@
               <img id="sharepointauth_profileImage" title="{{authentication.user}}" on-error="defaultImage()" src="http://mysites.eda.pt/User%20Photos/Imagens%20do%20Perfil/GRUPOEDA_{{authentication.user}}_SThumb.jpg">            
             </template>
           </template>
-        </div>
+        </span>
       </template>
       <script type="application/dart" src="xsharepointauth.dart"></script>
     </element>
