@@ -2,6 +2,7 @@ import 'dart:json' as json;
 import 'dart:html';
 import 'package:web_ui/web_ui.dart';
 import 'package:sharepointauth/authentication.dart';
+import 'dart:async';
 
 class Sharepointauth extends WebComponent {
 @observable
@@ -12,7 +13,7 @@ class Sharepointauth extends WebComponent {
 @observable
   String app;
 @observable
-  int refreshTimeout;
+  int refreshtimeout=3600;
 @observable
   String get endpoint{
     String endpoint;
@@ -27,12 +28,22 @@ class Sharepointauth extends WebComponent {
   }
   
   void defaultImage(){
-    query("#profileImage").attributes["src"]="../nophoto.png";
+    query("#sharepointauth_profileImage").attributes["src"]="packages/sharepointauth/components/nophoto.png";
+  }
+  void reloadIframe(){
+    Element iframe = query("#sharepointauth_iframe");
+    if(iframe!=null){
+      iframe.attributes["src"] += "";
+    }
   }
   void created(){
     window.onMessage.listen((MessageEvent event) {
       Map data = json.parse(event.data);
       authentication = new Authentication(data["user"],data["datetime"],data["key"], data["error"]);
+    });
+    window.onLoad.listen((event) {
+      Duration duration = new Duration(seconds:refreshtimeout);
+      new Timer.periodic(duration, (timer)=>reloadIframe());      
     });
   }
 }

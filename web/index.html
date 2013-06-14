@@ -11,7 +11,7 @@
         
     <p>Hello world from Dart!</p>
     
-    <xsharepointauth bind-authentication="authentication" type="qual" app="BEX"></xsharepointauth>
+    <xsharepointauth bind-authentication="authentication" type="mock" app="BEX" refreshtimeout="{{5}}"></xsharepointauth>
     <div>
       <template if="authentication!=null">
         user={{authentication.user}}<br>
