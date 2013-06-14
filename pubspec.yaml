@@ -1,0 +1,9 @@
+name: sharepointauth
+version: 0.1.0
+author: João Furtado <jrofurtado@gmail.com>
+description: EDA.pt sharepoint authentication dart webui component
+homepage: https://github.com/jrofurtado/sharepointauth
+dependencies:
+  browser: any
+  js: any
+  web_ui: any

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sample app</title>
+    <link rel="import" href="packages/xsharepointauth/components/xsharepointauth.html">
+  </head>
+  <body>
+    <h1>Sharepoint Authentication Component</h1>
+        
+    <p>Hello world from Dart!</p>
+    
+    <xsharepointauth bind-authentication="authentication" type="qual" app="BEX"></xsharepointauth>
+    <div>
+      <template if="authentication!=null">
+        user={{authentication.user}}<br>
+        datetime={{authentication.datetime}}<br>
+        key={{authentication.key}}<br>
+        error={{authentication.error}}<br>
+      </template>
+    </div>
+    <script type="application/dart" src="index.dart"></script>
+    <script src="packages/browser/dart.js"></script>
+  </body>
+</html>
