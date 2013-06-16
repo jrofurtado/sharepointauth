@@ -1,4 +1,5 @@
 import 'package:web_ui/web_ui.dart';
+import 'dart:async';
 
 @observable
 class Authentication{
@@ -7,5 +8,12 @@ class Authentication{
   String datetime;
   String key;
   String error;
+  Completer completer = new Completer();
+  
   Authentication(this.user,this.name,this.datetime,this.key, this.error);
+  
+  void waitForAuthentication(){
+    if(!completer.isCompleted)
+      Future.wait([completer.future]);
+  }
 }

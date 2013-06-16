@@ -39,7 +39,13 @@ class Sharepointauth extends WebComponent {
   void created(){
     window.onMessage.listen((MessageEvent event) {
       Map data = json.parse(event.data);
-      authentication = new Authentication(data["user"],data["name"],data["datetime"],data["key"], data["error"]);
+      authentication.user=data["user"];
+      authentication.name=data["name"];
+      authentication.datetime=data["datetime"];
+      authentication.key=data["key"];
+      authentication.error=data["error"];
+      if(!authentication.completer.isCompleted)
+        authentication.completer.complete(null);
     });
     window.onLoad.listen((event) {
       Duration duration = new Duration(seconds:refreshtimeout);
