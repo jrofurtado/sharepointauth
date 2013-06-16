@@ -10,7 +10,7 @@ class Authentication{
   String error;
   Completer completer = new Completer();
   
-  Authentication(this.user,this.name,this.datetime,this.key, this.error);
+  Authentication();
   
   void waitForAuthentication(){
     if(!completer.isCompleted)
