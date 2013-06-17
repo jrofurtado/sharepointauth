@@ -34,6 +34,7 @@ class Sharepointauth extends WebComponent {
     Element iframe = query("#sharepointauth_iframe");
     if(iframe!=null){
       iframe.attributes["src"] += "";
+      print("reloadIframe() Authentication");
     }
   }
   void created(){
@@ -46,8 +47,7 @@ class Sharepointauth extends WebComponent {
       authentication.datetime=data["datetime"];
       authentication.key=data["key"];
       authentication.error=data["error"];
-      if(!authentication.completer.isCompleted)
-        authentication.completer.complete(null);
+      authentication.completer.complete(null);
     });
     window.onLoad.listen((event) {
       Duration duration = new Duration(seconds:refreshtimeout);

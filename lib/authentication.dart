@@ -14,8 +14,7 @@ class Authentication{
   
   Authentication();
   
-  void waitForAuthentication(){
-    if(!completer.isCompleted)
-      Future.wait([completer.future]);
+  Future waitForAuthentication(){
+    return completer.future;
   }
 }
