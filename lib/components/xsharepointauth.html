@@ -6,18 +6,18 @@
       <template>
         <iframe id="sharepointauth_iframe" src="{{endpoint}}" width="0" height="0" style="visibility: hidden"></iframe>    
         <span class="sharepointauth">
-          <template if="authentication==null">
+          <template if="authentication==null || authentication.user==null">
             Autenticando...
           </template>
           <template if="authentication!=null">
             <template if="authentication.error!=null">
               <span class="sharepointauth_error">{{authentication.error}}</span>
             </template> 
-            <template if="authentication.error==null">
+            <template if="authentication.error==null && authentication.user!=null">
               <template if="authentication.name!=null">
                 <span class="sharepointauth_name">{{authentication.name}}</span>
               </template>
-              <img id="sharepointauth_profileImage" title="{{authentication.user}}" on-error="defaultImage()" src="http://mysites.eda.pt/User%20Photos/Imagens%20do%20Perfil/GRUPOEDA_{{authentication.user}}_SThumb.jpg">            
+              <img id="sharepointauth_profileImage" title="{{authentication.user}}" on-error="defaultImage()" src="http://mysites.eda.pt/User%20Photos/Imagens%20do%20Perfil/GRUPOEDA_{{authentication.user}}_SThumb.jpg">
             </template>
           </template>
         </span>
