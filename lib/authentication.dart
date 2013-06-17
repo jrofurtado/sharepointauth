@@ -1,3 +1,5 @@
+library authentication;
+
 import 'package:web_ui/web_ui.dart';
 import 'dart:async';
 
