@@ -34,11 +34,12 @@ class Sharepointauth extends WebComponent {
     Element iframe = query("#sharepointauth_iframe");
     if(iframe!=null){
       iframe.attributes["src"] += "";
-      print("reloadIframe() Authentication");
+      print("xsharepointauth reloadIframe() Authentication");
     }
   }
   void created(){
     window.onMessage.listen((MessageEvent event) {
+      print("xsharepointauth onMessage.listen()");
       Map data = json.parse(event.data);
       if(authentication==null)
         authentication=new Authentication();
