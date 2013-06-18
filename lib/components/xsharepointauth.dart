@@ -47,7 +47,8 @@ class Sharepointauth extends WebComponent {
       authentication.datetime=data["datetime"];
       authentication.key=data["key"];
       authentication.error=data["error"];
-      authentication.completer.complete(null);
+      if(!authentication.completer.isCompleted)
+        authentication.completer.complete(null);
     });
     window.onLoad.listen((event) {
       Duration duration = new Duration(seconds:refreshtimeout);
