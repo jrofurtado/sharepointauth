@@ -5,11 +5,12 @@ import 'package:sharepointauth/authentication.dart';
 @observable
 Authentication authentication;
 
-/**
- * Learn about the Web UI package by visiting
- * http://www.dartlang.org/articles/dart-web-components/.
- */
+void waitForAuthentication(){
+  authentication.waitForAuthentication();
+}
+
 void main() {
+  authentication = new Authentication(30, 5);
   // Enable this to use Shadow DOM in the browser.
   //useShadowDom = true;
 }

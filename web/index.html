@@ -8,10 +8,7 @@
   </head>
   <body>
     <h1>Sharepoint Authentication Component</h1>
-        
-    <p>Hello world from Dart!</p>
-    
-    <xsharepointauth bind-authentication="authentication" type="mock" app="BEX" refreshtimeout="{{5}}"></xsharepointauth>
+    <xsharepointauth bind-authentication="authentication" type="mock" app="BEX"></xsharepointauth>
     <div>
       <template if="authentication!=null">
         user={{authentication.user}}<br>
@@ -20,6 +17,7 @@
         key={{authentication.key}}<br>
         error={{authentication.error}}<br>
       </template>
+      <button on-click="waitForAuthentication()">Wait For Authentication</button>
     </div>
     <script type="application/dart" src="index.dart"></script>
     <script src="packages/browser/dart.js"></script>

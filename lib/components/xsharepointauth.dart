@@ -13,8 +13,6 @@ class Sharepointauth extends WebComponent {
 @observable
   String app;
 @observable
-  int refreshtimeout=3600;
-@observable
   String get endpoint{
     String endpoint;
     if(type=="mock")
@@ -31,15 +29,11 @@ class Sharepointauth extends WebComponent {
     query("#sharepointauth_profileImage").attributes["src"]="packages/sharepointauth/components/nophoto.png";
   }
   void reloadIframe(){
-    Element iframe = query("#sharepointauth_iframe");
-    if(iframe!=null){
-      iframe.attributes["src"] += "";
-      print("xsharepointauth reloadIframe() Authentication");
-    }
+    if(authentication!=null)
+      authentication.reloadIframe();
   }
   void created(){
     window.onMessage.listen((MessageEvent event) {
-      print("xsharepointauth onMessage.listen()");
       Map data = json.parse(event.data);
       if(authentication==null)
         authentication=new Authentication();
@@ -48,12 +42,13 @@ class Sharepointauth extends WebComponent {
       authentication.datetime=data["datetime"];
       authentication.key=data["key"];
       authentication.error=data["error"];
+      print("novo token autenticação recebido em ${new DateTime.now().toString()} com o seguinte timestamp ${authentication.datetime}");
       if(!authentication.completer.isCompleted)
         authentication.completer.complete(null);
     });
     window.onLoad.listen((event) {
-      Duration duration = new Duration(seconds:refreshtimeout);
-      new Timer.periodic(duration, (timer)=>reloadIframe());      
+      Duration duration = new Duration(seconds:authentication.refreshtimeout);
+      new Timer.periodic(duration, (timer)=>reloadIframe());
     });
   }
 }
