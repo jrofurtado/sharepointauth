@@ -10,7 +10,7 @@ void waitForAuthentication(){
 }
 
 void main() {
-  authentication = new Authentication(30, 5);
+  authentication = new Authentication();
   // Enable this to use Shadow DOM in the browser.
   //useShadowDom = true;
 }

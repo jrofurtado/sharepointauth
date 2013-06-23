@@ -6,8 +6,8 @@ import 'dart:html';
 
 @observable
 class Authentication{
-  int refreshtimeout=3600;
-  int tokentimeout=4600;
+  int refreshtimeout;
+  int tokentimeout;
   String user;
   String name;
   String datetime;
@@ -29,7 +29,7 @@ class Authentication{
   }
   Completer completer = new Completer();
   
-  Authentication([refreshtimeout, tokentimeout]){
+  Authentication([refreshtimeout = 3600, tokentimeout = 4600]){
     this.refreshtimeout = refreshtimeout;
     this.tokentimeout = tokentimeout;
   }
